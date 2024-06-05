@@ -3,7 +3,7 @@ package org.example;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-public class Utils {
+public class MillerUtils {
     private static final SecureRandom random = new SecureRandom();
 
     public static BigInteger generatePrime(int numBits) {
@@ -41,13 +41,13 @@ public class Utils {
 
     private static boolean millerTest(BigInteger n, BigInteger d) {
         BigInteger a = BigInteger.TWO.add(new BigInteger(n.bitLength() - 2, random));
-        BigInteger x = Utils.modExp(a, d, n);
+        BigInteger x = MillerUtils.modExp(a, d, n);
         if (x.equals(BigInteger.ONE) || x.equals(n.subtract(BigInteger.ONE))) {
             return true;
         }
 
         while (!d.equals(n.subtract(BigInteger.ONE))) {
-            x = Utils.modExp(x, BigInteger.TWO, n);
+            x = MillerUtils.modExp(x, BigInteger.TWO, n);
             d = d.multiply(BigInteger.TWO);
             if (x.equals(BigInteger.ONE)) {
                 return false;

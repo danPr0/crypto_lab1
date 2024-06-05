@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-        BigInteger n = Utils.generatePrime(128);
+        BigInteger n = MillerUtils.generatePrime(128);
         System.out.println("Generated prime in base2: " + OutputFormatter.toBase2(n));
         System.out.println("Generated prime in base10: " + OutputFormatter.toBase10(n));
         System.out.println("Generated prime in base64: " + OutputFormatter.toBase64(n));
